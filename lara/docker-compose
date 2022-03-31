@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+
+  wordpress:
+#    image: bitnami/laravel:9
+    image: lara:1
+    container_name: unirpdfs
+    hostname: unirpdfs
+    restart: unless-stopped
+    ports:
+      - 8002:8000
+    volumes:
+      - './volumes/files:/files/'
+      - './volumes/app:/app/'
+
