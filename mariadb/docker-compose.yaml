@@ -1,0 +1,32 @@
+version: '3.1'
+services:
+  db:
+    image: 'mariadb:focal'
+    container_name: mysql
+    hostname: mysql
+    restart: unless-stopped
+    ports:
+      - '3306:3306'
+    volumes:
+      - './volumes/files:/files'
+      - './volumes/data:/var/lib/mysql'
+    environment:
+      TZ: 'America/Cordoba'
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_USER: 'usuario'
+      MYSQL_PASSWORD: 'usuario'
+      MYSQL_DATABASE: 'base'
+
+  phpmyadmin:
+    image: 'phpmyadmin:5.1-apache'
+    restart: unless-stopped
+    container_name: phpmyadmin
+    hostname: phpmyadmin
+    ports:
+      - '8001:80'
+    volumes:
+      - './volumes/files:/files'
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      UPLOAD_LIMIT: 300M
