@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+
+  wordpress:
+    image: debian-php7.4
+    container_name: intranet
+    hostname: intranet
+    restart: always
+    ports:
+      - 8001:80
+    volumes:
+      - ./volumes/app:/var/www/html/
+
