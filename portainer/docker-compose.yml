@@ -13,6 +13,6 @@ services:
       - 9000:9000
       - 9443:9443
     volumes:
-      - /etc/localtime:/etc/localtime:ro
+      - '/etc/localtime:/etc/localtime:ro'
       - '/var/run/docker.sock:/var/run/docker.sock'
-      - './portainer_data:/data'
+      - './volumes/data:/data'
