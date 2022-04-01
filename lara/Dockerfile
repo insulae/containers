@@ -1,3 +1,5 @@
+# docker build -t lara:1
+
 FROM  bitnami/laravel:9
 
 # Install dependencies
