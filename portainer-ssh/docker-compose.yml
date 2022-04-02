@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+  portainer-ssh:
+    image: portainer/portainer-ce:2.11.1
+    container_name: portainer-ssh
+    hostname: portainer-ssh
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - 8000:8000
+      - 9000:9000
+      - 9443:9443
+    volumes:
+      - '/tmp/docker-ssh.sock:/var/run/docker.sock'
+
+# for docker-fwd.sock volume you must run:
+# ssh -t -f -L /tmp/docker-ssh.sock:/var/run/docker.sock -N <USER>@<IP TO PORTAINER HOST> -p<SSH PORT> 
+# you can set and use psock.sh file
